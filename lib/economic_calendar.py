@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from lib.emojis import get_emoji
+from lib.storage import should_fetch_live_data, get_data
 
 
 def scrape_news():
@@ -55,13 +56,13 @@ def formart_date(day):
 
     # Format the datetime object to the desired output
     return date_object.strftime("%a %b %d")
-
-
-    
-            
+        
 
 def get_fomarted_news():
-    news_object = scrape_news()
+    if should_fetch_live_data():
+        news_object = scrape_news()
+    else: 
+        news_object = get_data()
     
     news_string = ""
     
