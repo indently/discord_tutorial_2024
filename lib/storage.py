@@ -13,6 +13,20 @@ def store_data(data):
     with open(json_file_path, 'w') as json_file:
         json.dump(data, json_file)
         
+def get_data():
+    
+    try:
+        # Reading data from the JSON file
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+        return data
+    except FileNotFoundError:
+        print(f"File '{json_file_path}' not found.")
+        return None
+    except json.JSONDecodeError:
+        print(f"Error decoding JSON in '{json_file_path}'.")
+        return None
+        
 def get_write_time():
     
     # Get the last modification time
