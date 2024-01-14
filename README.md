@@ -50,9 +50,15 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-**5. Add your miserable contribution**
+Inside the .env file add your DISCORD TOKEN
 
-![Mike Tyson Lauhing](https://usagif.com/wp-content/uploads/laughing-42.gif)
+**5. Run it**
+
+```sh
+python main.py
+```
+
+
 
 ## CONTRIBUTIONS
 
@@ -60,7 +66,10 @@ pip install -r requirements.txt
 
 1. Fork the repo
 2. Create a branch
-3. Add your changes
+3. Add your miserable contribution(s)
+   
+   ![Mike Tyson Lauhing](https://usagif.com/wp-content/uploads/laughing-42.gif)
+
 4. Create a pull request stating what changes you added etc
 5. Then I merge your changes
 
