@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from emojis import get_emoji
+from lib.emojis import get_emoji
 
 
 def scrape_news():
