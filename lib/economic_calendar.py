@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from lib.emojis import get_emoji
-from lib.storage import should_fetch_live_data, get_data
+from lib.storage import should_fetch_live_data, store_data, get_data
 
 
 def scrape_news():
@@ -39,6 +39,7 @@ def scrape_news():
                 row['actual'] = cells[8].get_text().strip()
             results.append(row)    
         
+        store_data(results)
         return results
     else:
         print(f"Failed to retrieve the page. Status code: {response.status_code}")
