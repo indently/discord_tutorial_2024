@@ -53,4 +53,8 @@ def time_difference() -> int:
     return hours_difference
 
 def should_fetch_live_data() -> bool:
-    return time_difference() > total_hours
+    
+    if os.path.exists(json_file_path):
+        return time_difference() > total_hours
+    else:
+        return True
