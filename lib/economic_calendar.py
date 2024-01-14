@@ -4,7 +4,7 @@ from lib.emojis import get_emoji
 from lib.storage import should_fetch_live_data, store_data, get_data
 
 
-def scrape_news():
+def scrape_news() -> dict:
     # Specify the URL you want to scrape
     url = 'https://www.myfxbook.com/forex-economic-calendar'
 
@@ -45,7 +45,7 @@ def scrape_news():
         print(f"Failed to retrieve the page. Status code: {response.status_code}")
         
         
-def formart_date(day):
+def formart_date(day) -> str:
     # day,time = date.split(",")
     from datetime import datetime
     
@@ -59,7 +59,7 @@ def formart_date(day):
     return date_object.strftime("%a %b %d")
         
 
-def get_fomarted_news():
+def get_fomarted_news() -> str:
     if should_fetch_live_data():
         news_object = scrape_news()
     else: 
