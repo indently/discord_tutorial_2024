@@ -7,13 +7,19 @@ total_hours = 5
 
 
 
-def store_data(data):
+def store_data(data) -> bool:
    
-    # Writing the dictionary to a JSON file
-    with open(json_file_path, 'w') as json_file:
-        json.dump(data, json_file)
+    try:
+        # Writing the dictionary to a JSON file
+        with open(json_file_path, 'w') as json_file:
+            json.dump(data, json_file)
+            
+        return True
+    except Exception: 
+        print(f"Could't write to file: {json}")
+        return False
         
-def get_data():
+def get_data() -> dict:
     
     try:
         # Reading data from the JSON file
@@ -27,7 +33,7 @@ def get_data():
         print(f"Error decoding JSON in '{json_file_path}'.")
         return None
         
-def get_write_time():
+def get_write_time() -> datetime:
     
     # Get the last modification time
     modification_time = os.path.getmtime(json_file_path)
@@ -37,7 +43,7 @@ def get_write_time():
     
     return last_modified_date
 
-def time_difference():
+def time_difference() -> int:
 
     last_modified_date = get_write_time()
     current_date = datetime.today()
@@ -46,5 +52,5 @@ def time_difference():
     
     return hours_difference
 
-def should_fetch_live_data():
+def should_fetch_live_data() -> bool:
     return time_difference() > total_hours
