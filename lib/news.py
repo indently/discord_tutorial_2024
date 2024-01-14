@@ -30,9 +30,11 @@ def get_news_string(ordered_news, impact=['High']):
     
 def get_news() -> str:
     if should_fetch_live_data():
+        print("[log] Fetching live data...")
         raw_news = scrape_news()
         store_data(raw_news)
     else: 
+        print("[log] Using stored data...")
         raw_news = get_data()
     
     ordered_news = order_news_by_day(raw_news)
